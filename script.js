@@ -28,6 +28,10 @@ var shoppingCart = (function () {
 
     // Add to cart
     obj.addItemToCart = function (name, price, count) {
+      for (var item in cart){
+        console.log(cart[item].name, cart[item].price, cart[item].count);
+        appier('event', 'product_added_to_cart', {'product_name': cart[item].name, 'product_id':cart[item].price,'product_count': cart[item].count});
+      }
       for (var item in cart) {
         if (cart[item].name === name) {
           cart[item].count++;
@@ -223,3 +227,21 @@ log = function () {
   }
   appier('identify', valuesWithContent);
 }
+
+/*
+add_to_cart = function (){
+  //function Item(name, price, count) {
+  //  this.name = name;
+  // this.price = price;
+  //  this.count = count;
+  //}
+  const productname = cart[item].name;
+  console.log(productname)
+  const prouctid = cart[item].name.price;
+  console.log(prouctid)
+  const count = cart[item].name.count;
+  console.log(count)
+  // Log a `product_viewed` event with the following parameters: `product_name`, `product_id`, `product_count`
+  //appier('event', 'product_added_to_cart', {'product_name': productname, 'product_id':prouctid,'product_count': count});
+}
+*/
