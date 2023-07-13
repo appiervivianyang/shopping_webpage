@@ -28,19 +28,19 @@ var shoppingCart = (function () {
 
     // Add to cart
     obj.addItemToCart = function (name, price, count) {
-      for (var item in cart){
-        console.log(cart[item].name, cart[item].price, cart[item].count);
-        appier('event', 'product_added_to_cart', {'product_name': cart[item].name, 'product_id':cart[item].price,'product_count': cart[item].count});
-      }
       for (var item in cart) {
         if (cart[item].name === name) {
           cart[item].count++;
           saveCart();
+          console.log(cart[item].name, cart[item].price, cart[item].count);
+          appier('event', 'product_added_to_cart', {'product_name': cart[item].name, 'product_id':cart[item].price,'product_count': cart[item].count});
           return;
         }
       }
       var item = new Item(name, price, count);
       cart.push(item);
+      console.log(item.name, item.price, item.count);
+      appier('event', 'product_added_to_cart', {'product_name': item.name, 'product_id':item.price,'product_count': item.count});
       saveCart();
     }
     // Set count from item
