@@ -234,9 +234,6 @@ log = function () {
   appier('identify', valuesWithContent);
 }
 
-checkout = function() {
-
-}
 
 /*
 add_to_cart = function (){
